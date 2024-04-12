@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Atuador {
+
     private Long id;
     private String nome;
     private boolean status;

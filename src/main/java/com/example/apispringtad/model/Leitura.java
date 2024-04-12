@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,5 +14,6 @@ import lombok.Setter;
 public class Leitura {
     private Long id;
     private Sensor sensor;
-    private Atuador atuador;
+    private String valor;
+    private LocalDateTime dataHora;
 }

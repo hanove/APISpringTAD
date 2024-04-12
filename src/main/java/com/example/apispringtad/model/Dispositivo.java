@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,6 +16,6 @@ public class Dispositivo {
     private String nome;
     private String descricao;
     private String[] coordenadas;
-    private Sensor[] sensores;
-    private Atuador[] atuadores;
+    private List<Sensor> sensores;
+    private List<Atuador> atuadores;
 }
