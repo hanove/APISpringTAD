@@ -1,5 +1,6 @@
 package com.example.apispringtad.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,11 +12,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Dispositivo {
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;
-    private String[] coordenadas;
+    @ElementCollection
+    private List<String> coordenadas;
+    @OneToMany
     private List<Sensor> sensores;
+    @OneToMany
     private List<Atuador> atuadores;
 }
