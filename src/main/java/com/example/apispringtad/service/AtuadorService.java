@@ -18,7 +18,9 @@ public class AtuadorService {
     private AtuadorRepository atuadorRepository;
 
     public Atuador create(AtuadorDTO dto) {
+        validateAtuador(dto);
         var atuador = new Atuador();
+
         BeanUtils.copyProperties(dto, atuador);
 
         return atuadorRepository.save(atuador);
@@ -54,6 +56,13 @@ public class AtuadorService {
         }
 
         atuadorRepository.delete(res.get());
+    }
+
+    private void validateAtuador(AtuadorDTO dto) {
+        if (dto.nome() == null || dto.nome().isEmpty()) {
+            throw new IllegalArgumentException("Nome do atuador não pode ser vazio.");
+        }
+
     }
 
 }
