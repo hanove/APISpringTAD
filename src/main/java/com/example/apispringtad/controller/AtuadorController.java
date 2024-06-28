@@ -3,6 +3,7 @@ package com.example.apispringtad.controller;
 import com.example.apispringtad.dto.AtuadorDTO;
 import com.example.apispringtad.exception.NotFoundException;
 import com.example.apispringtad.model.Atuador;
+import com.example.apispringtad.rabbit.QueueSender;
 import com.example.apispringtad.service.AtuadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,8 @@ public class AtuadorController {
 
     @Autowired
     private AtuadorService atuadorService;
+    @Autowired
+    private QueueSender queueSender;
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody AtuadorDTO dto) {
@@ -30,6 +33,7 @@ public class AtuadorController {
 
     @GetMapping
     public List<Atuador> getAll() {
+        queueSender.send("Getting Atuador");
         return atuadorService.getAll();
     }
 
